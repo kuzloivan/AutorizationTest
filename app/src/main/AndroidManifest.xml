@@ -3,7 +3,6 @@
     package="com.pass.ann.autorization">
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -19,8 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity"/>
-        <activity android:name=".ui.RegistrationActivity"></activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.RegistrationActivity"/>
         <activity android:name=".ui.ProfileSettingsActivity"/>
     </application>
 </manifest>

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Login"
-            android:text="kuzloivan"
+            android:text="kuzloivan@gmail"
             android:background="#55ffffff"
             android:padding="8dp"
             android:nextFocusDown="@+id/first_address_house"/>
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:text="123qwe"
+            android:text="123456"
             android:background="#55ffffff"
             android:padding="8dp"
             android:nextFocusDown="@+id/first_address_house"/>
