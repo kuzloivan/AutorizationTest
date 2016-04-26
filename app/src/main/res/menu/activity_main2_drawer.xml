@@ -8,6 +8,9 @@
             android:id="@+id/calls"
             android:title="Call Schedule"/>
         <item
+            android:id="@+id/users"
+            android:title="Users"/>
+        <item
             android:id="@+id/news"
             android:title="News"/>
         <item

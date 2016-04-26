@@ -23,7 +23,7 @@ import com.pass.ann.autorization.R;
 /**
  * Created by ivan.k on 21.04.2016.
  */
-public class ProfileSettingsActivity extends AppCompatActivity {
+public class ProfileSettingsActivity extends BaseActivity {
 
 
     @Bind(R.id.first_name)
@@ -56,10 +56,11 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         birthDay.setText(year+"."+monthOfYear+"."+dayOfMonth);
                     }
-                },2016,1,1);
+                },1990,1,1);
                 dialog.show();
                 break;
             case R.id.save:
+                showDialog();
                 BackendlessUser user = Backendless.UserService.CurrentUser();
                 user.setProperty("fname", firstName.getText().toString());
                 user.setProperty("lname", lastName.getText().toString());
@@ -69,12 +70,14 @@ public class ProfileSettingsActivity extends AppCompatActivity {
                     @Override
                     public void handleResponse(BackendlessUser backendlessUser) {
                         MainActivity.start(ProfileSettingsActivity.this);
+                        hideDialog();
                     }
 
                     @Override
                     public void handleFault(BackendlessFault backendlessFault) {
                         Toast.makeText(ProfileSettingsActivity.this, backendlessFault.getMessage(), Toast
                                 .LENGTH_SHORT).show();
+                        hideDialog();
                     }
                 });
                 break;

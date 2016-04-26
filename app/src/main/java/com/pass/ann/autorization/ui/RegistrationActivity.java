@@ -18,7 +18,7 @@ import com.pass.ann.autorization.R;
 /**
  * Created by ivan.k on 15.04.2016.
  */
-public class RegistrationActivity extends AppCompatActivity {
+public class RegistrationActivity extends BaseActivity {
 
     @Bind(R.id.login)
     EditText login;
@@ -42,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @OnClick(R.id.register)
     public void onClick() {
         if(pass.getText().toString().equals(passConfirm.getText().toString())){
+            showDialog();
             BackendlessUser user = new BackendlessUser();
             user.setEmail(login.getText().toString());
             user.setPassword(pass.getText().toString());
@@ -50,11 +51,13 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void handleResponse(BackendlessUser backendlessUser) {
                     ProfileSettingsActivity.start(RegistrationActivity.this);
                     Backendless.UserService.setCurrentUser(backendlessUser);
+                    hideDialog();
                 }
 
                 @Override
                 public void handleFault(BackendlessFault backendlessFault) {
                     Toast.makeText(RegistrationActivity.this, backendlessFault.getMessage(), Toast.LENGTH_SHORT).show();
+                    hideDialog();
                 }
             });
         }else {

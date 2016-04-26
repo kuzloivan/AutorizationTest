@@ -8,9 +8,13 @@ import butterknife.ButterKnife;
 /**
  * Created by ivan.k on 21.04.2016.
  */
-public class CallVH extends SimpleRecyclerAdapter.BaseViewHolder<call_shedule> {
-    @Bind(R.id.text)
-    TextView view;
+public class CallVH extends SimpleRecyclerAdapter.BaseViewHolder<CallShedule> {
+    @Bind(R.id.num)
+    TextView num;
+    @Bind(R.id.start)
+    TextView start;
+    @Bind(R.id.end)
+    TextView end;
 
 
     public CallVH(View itemView) {
@@ -19,8 +23,10 @@ public class CallVH extends SimpleRecyclerAdapter.BaseViewHolder<call_shedule> {
     }
 
     @Override
-    public void fill(call_shedule object) {
-        view.setText(object.start+" - " + object.end);
+    public void fill(CallShedule object) {
+        num.setText(object.number+"");
+        start.setText(object.start);
+        end.setText(object.end);
     }
 
 }

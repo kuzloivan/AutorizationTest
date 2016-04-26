@@ -18,7 +18,7 @@ import com.pass.ann.autorization.R;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
 
     @Bind(R.id.login)
@@ -37,15 +37,18 @@ public class LoginActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_btn:
+                showDialog();
                 Backendless.UserService.login(login.getText().toString(), pass.getText().toString(), new AsyncCallback<BackendlessUser>() {
                     @Override
                     public void handleResponse(BackendlessUser backendlessUser) {
                         MainActivity.start(LoginActivity.this);
+                        hideDialog();
                     }
 
                     @Override
                     public void handleFault(BackendlessFault backendlessFault) {
                         Toast.makeText(LoginActivity.this, backendlessFault.getMessage(), Toast.LENGTH_SHORT).show();
+                        hideDialog();
                     }
                 });
                 break;
